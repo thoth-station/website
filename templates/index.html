@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/css/patternfly.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/css/patternfly-additions.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
 
 </head>
@@ -24,47 +25,107 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">
-                <img src="{{ url_for('static', filename='graphics/thoth.svg') }}" alt="Thoth API jump page" />
+                <img src="{{ url_for('static', filename='graphics/thoth.png') }}" alt="Thoth API jump page" width="10%" />
             </a>
         </div>
     </nav>
 
     <div class="container-fluid container-cards-pf" id="main">
         <div class="row row-cards-pf">
-            <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="col-xs-12 col-sm-6 col-md-3">
                 <div class="card-pf card-pf-accented card-pf-aggregate-status">
                     <h2 class="card-pf-title">
-                        <span class="fa pf pficon-topology"></span> Core API
+                        <span class="fab fa-jenkins"></span> CI/CD Pipeline
                     </h2>
                     <div class="card-pf-body">
                         <p class="card-pf-aggregate-status-notifications">
-                            <span class="card-pf-aggregate-status-notification"> <a href="http://thoth-user-api-hostname-thoth-test-core.cloud.upshift.engineering.redhat.com/api/v1/ui/">Swagger</a>
+                            <span class="card-pf-aggregate-status-notification">
+                                <a href=" https://jenkins-thoth-prod-ci.cloud.upshift.engineering.redhat.com/blue/organizations/jenkins/">BlueOcean UI</a>
+                            </span>
+                        </p>
+                        <div class="card-pf-items text-center">
+                            <div class="card-pf-item">
+                                <span class="card-pf-item-text">CI/CD Pipeline</span>
+                                <span class="card-pf-item-text">
+                                    <a href='https://jenkins-thoth-prod-ci.cloud.upshift.engineering.redhat.com/job/AICoE/job/AI-Stacks-pipeline/job/master/'>
+                                        <img src='https://jenkins-thoth-prod-ci.cloud.upshift.engineering.redhat.com/buildStatus/icon?job=AICoE/AI-Stacks-pipeline/master'>
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="card-pf-item">
+                                <span class="card-pf-item-text">JanusGraph Container</span>
+                                <span class="card-pf-item-text">
+                                    <a href='#'>
+                                        N/A
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="card-pf-item">
+                                <span class="card-pf-item-text">Analyse & Solve API</span>
+                                <span class="card-pf-item-text">
+                                    <a href='#'>
+                                        N/A
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="card-pf-item">
+                                <span class="card-pf-item-text">Result API </span>
+                                <span class="card-pf-item-text">
+                                    <a href='#'>
+                                        N/A
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="card-pf-item">
+                                <span class="card-pf-item-text">Dependency Monkey</span>
+                                <span class="card-pf-item-text">
+                                    <a href='https://jenkins-thoth-prod-ci.cloud.upshift.engineering.redhat.com/job/AICoE/job/thoth-dependency-monkey/job/master/'>
+                                        <img src='https://jenkins-thoth-prod-ci.cloud.upshift.engineering.redhat.com/job/AICoE/job/thoth-dependency-monkey/job/master/badge/icon'>
+                                    </a>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status">
+                    <h2 class="card-pf-title">
+                        <span class="pf pficon-topology"></span> Analyse & Solve API
+                    </h2>
+                    <div class="card-pf-body">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="card-pf-aggregate-status-notification">
+                                <a href="http://thoth-user-api-hostname-thoth-test-core.cloud.upshift.engineering.redhat.com/api/v1/ui/">Swagger</a>
                             </span>
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="col-xs-12 col-sm-6 col-md-3">
                 <div class="card-pf card-pf-accented card-pf-aggregate-status">
                     <h2 class="card-pf-title">
-                        <span class="fa pf pficon-image"></span> Result API
+                        <span class="pf pficon-image"></span> Result API
                     </h2>
                     <div class="card-pf-body">
                         <p class="card-pf-aggregate-status-notifications">
-                            <span class="card-pf-aggregate-status-notification"> <a href="http://thoth-result-api-hostname-thoth-test-core.cloud.upshift.engineering.redhat.com/api/v1">Index</a>
+                            <span class="card-pf-aggregate-status-notification">
+                                <a href="http://thoth-result-api-hostname-thoth-test-core.cloud.upshift.engineering.redhat.com/api/v1">Index</a>
                             </span>
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="col-xs-12 col-sm-6 col-md-3">
                 <div class="card-pf card-pf-accented card-pf-aggregate-status">
                     <h2 class="card-pf-title">
-                        <span class="fa pf pficon-network"></span> Dependency Monkey
+                        <span class="pf pficon-network"></span> Dependency Monkey
                     </h2>
                     <div class="card-pf-body">
                         <p class="card-pf-aggregate-status-notifications">
-                            <span class="card-pf-aggregate-status-notification"> <a href="http://api-service-thoth-test-core.cloud.upshift.engineering.redhat.com/openapi/">Swagger</a>
+                            <span class="card-pf-aggregate-status-notification">
+                                <a href="http://api-service-thoth-test-core.cloud.upshift.engineering.redhat.com/openapi/">Swagger</a>
                             </span>
                         </p>
                     </div>
