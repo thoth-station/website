@@ -1,5 +1,5 @@
 // configuration for the graph database access
-const HOST = "thoth-janusgraph-hostname-thoth-middleend.ose.sbu.lab.eng.bos.redhat.com"
+const HOST = "janusgraph-hostname-thoth-middleend.ose.sbu.lab.eng.bos.redhat.com"
 const PORT = "80"
 
 // for implementations like Neptune where only single commands are allowed per request
