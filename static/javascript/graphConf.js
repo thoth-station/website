@@ -1,5 +1,5 @@
 // configuration for the graph database access
-const HOST = "janusgraph-hostname-thoth-middleend.ose.sbu.lab.eng.bos.redhat.com"
+const HOST = "janusgraph-hostname-thoth-test-core.cloud.upshift.engineering.redhat.com"
 const PORT = "80"
 
 // for implementations like Neptune where only single commands are allowed per request
@@ -15,7 +15,7 @@ const COMMUNICATION_PROTOCOL = "websocket";
 // The communication method can be GraphSON 1.0 (used by Gremlin 3.2)
 // or GraphSON 3.0 (used by Gremlin 3.3)
 const COMMUNICATION_METHOD = "GraphSON1"
-//const COMMUNICATION_METHOD = "GraphSON3"
+    //const COMMUNICATION_METHOD = "GraphSON3"
 
 // Graph configuration
 const default_nb_of_layers = 3;
