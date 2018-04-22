@@ -21,22 +21,47 @@
 import os
 import time
 import logging
+import daiquiri
+
+from github import Github
+from github import UnknownObjectException
 
 from flask import Flask
 from flask import render_template
 
 
 DEBUG = bool(os.getenv('DEBUG', False))
+SESHETA_GITHUB_ACCESS_TOKEN = os.getenv('SESHETA_GITHUB_ACCESS_TOKEN', None)
+
+
+daiquiri.setup(level=logging.INFO)
+logger = daiquiri.getLogger(__name__)
 
 if DEBUG:
-    logging.basicConfig(level=logging.DEBUG)
+    logger.setLevel(level=logging.DEBUG)
 else:
-    logging.basicConfig(level=logging.INFO)
-
-logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
-
+    logger.setLevel(level=logging.INFO)
 
 app = Flask(__name__)
+
+
+def _get_open_pullrequests():
+    github = Github(SESHETA_GITHUB_ACCESS_TOKEN)
+    org = github.get_organization('thoth-station')
+    open_prs = []
+
+    for repo in org.get_repos():
+        for pr in repo.get_pulls(state='open'):
+            _pr = {}
+            _pr['repo'] = repo.name
+            _pr['title'] = pr.title
+            _pr['labels'] = pr.as_issue().labels
+            _pr['html_url'] = pr.html_url
+            _pr['user'] = pr.user.login
+
+            open_prs.append(_pr)
+
+    return open_prs
 
 
 @app.route('/')
@@ -47,6 +72,11 @@ def hello():
 @app.route('/graph')
 def graphexp():
     return render_template('graphexp.html')
+
+
+@app.route('/open-prs')
+def open_prs():
+    return render_template('open-prs.html', open_prs=_get_open_pullrequests())
 
 
 if __name__ == "__main__":
