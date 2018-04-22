@@ -49,19 +49,28 @@ def _get_open_pullrequests():
     github = Github(SESHETA_GITHUB_ACCESS_TOKEN)
     org = github.get_organization('thoth-station')
     open_prs = []
+    open_prs_counter = 0
 
     for repo in org.get_repos():
+        _repo = {}
+        _repo['name'] = repo.name
+        _repo['prs'] = []
+
         for pr in repo.get_pulls(state='open'):
             _pr = {}
-            _pr['repo'] = repo.name
             _pr['title'] = pr.title
             _pr['labels'] = pr.as_issue().labels
             _pr['html_url'] = pr.html_url
             _pr['user'] = pr.user.login
 
-            open_prs.append(_pr)
+            _repo['prs'].append(_pr)
 
-    return open_prs
+            open_prs_counter += 1
+
+        if len(_repo['prs']) > 0:
+            open_prs.append(_repo)
+
+    return open_prs, open_prs_counter
 
 
 @app.route('/')
@@ -76,7 +85,9 @@ def graphexp():
 
 @app.route('/open-prs')
 def open_prs():
-    return render_template('open-prs.html', open_prs=_get_open_pullrequests())
+    _open_prs, _open_prs_num = _get_open_pullrequests()
+
+    return render_template('open-prs.html', open_prs=_open_prs, open_prs_num=_open_prs_num)
 
 
 if __name__ == "__main__":

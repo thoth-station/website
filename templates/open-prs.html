@@ -32,15 +32,25 @@
 
     <div class="container-fluid container-cards-pf" id="main">
         <div class="row">
+            <h1>{{ open_prs_num }} Open Pull Requests</h1>
             <ul class=entries>
-                {% for entry in open_prs %}
+                {% for r in open_prs %}
                 <li>
-                    <h2>{{ entry.repo }}</h2>
-                    <h3>
-                        <a href="{{ entry.html_url }}">{{ entry.title }} ({{ entry.user }})</a></h3>
+                    <h2>{{ r.name }}</h2>
 
-                    <p>{% for label in entry.labels %} {{ label.name }} {% endfor %} {% endfor %}</p>
+                    <ul>
+                        {% for pr in r.prs %}
+                        <li>
+                            <h3><a href="{{ pr.html_url }}">{{ pr.title }}</a> ({{ pr.user }})</h3>
+
+                            <p>{% for label in pr.labels %} {{ label.name }} {% endfor %}</p>
+
+                        </li>
+
+                        {% endfor %}
+                    </ul>
                 </li>
+                {% endfor %}
             </ul>
         </div>
     </div>
