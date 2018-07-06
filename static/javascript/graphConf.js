@@ -1,5 +1,5 @@
 // configuration for the graph database access
-const HOST = "janusgraph-hostname-thoth-test-core.cloud.upshift.engineering.redhat.com"
+const HOST = "janusgraph-thoth-test-core.cloud.paas.upshift.redhat.com"
 const PORT = "80"
 
 // for implementations like Neptune where only single commands are allowed per request
