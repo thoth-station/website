@@ -23,6 +23,9 @@ import time
 import logging
 import daiquiri
 
+import prometheus_client
+from prometheus_flask_exporter import PrometheusMetrics
+
 from github import Github
 from github import UnknownObjectException
 
@@ -43,6 +46,8 @@ else:
     logger.setLevel(level=logging.INFO)
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
+metrics.info('app_info', 'Thoth website', version='E_NO_VERSION')
 
 
 def _get_open_pullrequests():
